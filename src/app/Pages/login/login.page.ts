@@ -85,7 +85,7 @@ export class LoginPage implements OnInit {
   });
   public Register() {
    // console.log(this.registrationForm.value);
-
+    
    let key= this.userService.RegisterUser(this.registrationForm.value).key;
    this.DisplayToast("Register Success");
   this.GotoLogin();
@@ -139,6 +139,16 @@ export class LoginPage implements OnInit {
     
     });
     toast.present();
+  }
+
+  ionViewWillEnter ()
+  {
+    if(localStorage.getItem('user'))
+    {
+     this.router.navigate(['home']);
+      
+    }
+   
   }
 
 }

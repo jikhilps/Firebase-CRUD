@@ -1,13 +1,58 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="secondary">
-      <ion-button class="icon-only" (click)="LogOut()">
-        <ion-icon name="log-out"></ion-icon>
+      <ion-button (click)="logout()" class="icon-only" >
+        <ion-icon name="log-out" ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Add New Location</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+   <div class="ion-padding" >
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input required pattern="text" [(ngModel)]='user.LocationName'></ion-input>
+        
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input required pattern="text" [(ngModel)]='user.Address' ></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input required  pattern="text" [(ngModel)]='user.City'></ion-input>
+        </ion-item>
+     
+        <ion-item>
+          <!-- <ion-label position="floating">Country</ion-label> -->
+          <!-- <ion-input required  pattern="text"  [(ngModel)]='user.Country'></ion-input> -->
+          <ion-select  [(ngModel)]='user.Country' placeholder="Select Country">
+            <ion-select-option value="INDIA">INDIA</ion-select-option>
+            <ion-select-option value="USA">USA</ion-select-option>
+            <ion-select-option value="UAE">UAE</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input required pattern="tel" [(ngModel)]='user.Phone'></ion-input>
+        </ion-item>
+        
+      
+      </ion-list>
+     
+      <ion-button (click)='Save()' color="danger" type="submit" expand="block"> Save Location </ion-button>
+    
+     
+
+   
+  </div> 
+</ion-content>

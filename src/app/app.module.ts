@@ -22,7 +22,7 @@ import { environment } from '../environments/environment';
   imports: [BrowserModule,ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule],
+    AngularFireStorageModule, ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

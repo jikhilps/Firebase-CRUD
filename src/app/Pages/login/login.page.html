@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header  >
+  <ion-toolbar color="danger">
     <ion-title   *ngIf='IsRegister'> 
    Register
     </ion-title>
@@ -8,7 +8,7 @@
        </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content >
   <div class="ion-padding" *ngIf='IsRegister'>
     <form [formGroup]="registrationForm" (ngSubmit)="Register()">
       <ion-list>
@@ -25,7 +25,7 @@
           <ion-label position="floating">Phone</ion-label>
           <ion-input inputmode="tel" formControlName="phone"></ion-input>
         </ion-item>
-        <div *ngFor="let error of errorMessages.Phone">
+        <div *ngFor="let error of errorMessages.phone">
           <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
             <small class="error-message">{{error.message}}</small>
           </ng-container>
@@ -50,7 +50,7 @@
         </div>
       </ion-list>
      
-      <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Register <ion-icon slot="end"
+      <ion-button [disabled]="!registrationForm.valid" color="secondary" type="submit" expand="block">Register <ion-icon slot="end"
           name="create">
         </ion-icon>
       </ion-button>
@@ -87,7 +87,7 @@
         
       </ion-list>
      
-      <ion-button [disabled]="!LoginForm.valid" type="submit" expand="block">Login <ion-icon slot="end"
+      <ion-button [disabled]="!LoginForm.valid" type="submit" color="secondary"  expand="block">Login <ion-icon slot="end"
           name="create">
         </ion-icon>
       </ion-button>
