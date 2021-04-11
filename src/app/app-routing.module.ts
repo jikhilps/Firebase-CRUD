@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'src/Services/auth-guard.service';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'location-list', pathMatch: 'full' },
   {
     path: 'location-list',
     loadChildren: () => import('./Pages/location-list/location-list.module').then(m => m.LocationListPageModule),
