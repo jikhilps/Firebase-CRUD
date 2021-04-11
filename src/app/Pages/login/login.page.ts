@@ -84,9 +84,15 @@ export class LoginPage implements OnInit {
    
   });
   public Register() {
-   // console.log(this.registrationForm.value);
-    
-   let key= this.userService.RegisterUser(this.registrationForm.value).key;
+   
+    let data=this.registrationForm.value
+    let uu=new User();
+    uu.Name=data['name'];
+    uu.Email=data['email'];
+    uu.Mobile=data['phone'];
+    uu.Password=data['password'];
+    console.log(uu);
+   let key= this.userService.RegisterUser(uu).key;
    this.DisplayToast("Register Success");
   this.GotoLogin();
   }
@@ -103,20 +109,20 @@ export class LoginPage implements OnInit {
         let uu=new User();
         let itm = item.payload.toJSON();
         uu.Id=item.key;
-        uu.Name=itm['name'];
-        uu.Email=itm['email'];
-        uu.Mobile=itm['mobile'];
-        uu.Password=itm['password'];
+        uu.Name=itm['Name'];
+        uu.Email=itm['Email'];
+        uu.Mobile=itm['Mobile'];
+        uu.Password=itm['Password'];
       
         this.UserList.push(uu);
       })
       
-      if(this.UserList.find((x)=> x.Password==data['password'] && (x.Email==data['email'] || x.Mobile==data['mobile'])))
+      if(this.UserList.find((x)=> x.Password==data['password'] && (x.Email==data['username'] || x.Mobile==data['username'])))
       {
         this.DisplayToast("Login Success");
-       this.user=this.UserList.find((x)=> x.Password==data['password'] && (x.Email==data['email'] || x.Mobile==data['mobile']))
+       this.user=this.UserList.find((x)=> x.Password==data['password'] && (x.Email==data['username'] || x.Mobile==data['username']))
        localStorage.setItem("user",JSON.stringify(this.user));
-       this.router.navigate([''])
+       this.router.navigate(['location-list'])
 
       }
       else
@@ -135,6 +141,7 @@ export class LoginPage implements OnInit {
   async DisplayToast(msg:string) {
     const toast = await this.toastCtrl.create({
       message: msg,
+      duration: 3000,
       position: 'bottom',
     
     });
@@ -145,7 +152,7 @@ export class LoginPage implements OnInit {
   {
     if(localStorage.getItem('user'))
     {
-     this.router.navigate(['home']);
+     this.router.navigate(['location-list']);
       
     }
    

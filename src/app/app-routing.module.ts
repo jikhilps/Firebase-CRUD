@@ -4,13 +4,13 @@ import { AuthGuardService } from 'src/Services/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./Pages/tabs/tabs.module').then(m => m.TabsPageModule),
+    path: 'location-list',
+    loadChildren: () => import('./Pages/location-list/location-list.module').then(m => m.LocationListPageModule),
     canActivate:[AuthGuardService]
   },
   {
-    path: 'home',
-    loadChildren: () => import('./Pages/tabs/tabs.module').then( m => m.TabsPageModule),
+    path: 'add-location',
+    loadChildren: () => import('./Pages/add-location/tabs.module').then( m => m.TabsPageModule),
     canActivate:[AuthGuardService]
   },
   {
@@ -22,7 +22,12 @@ const routes: Routes = [
     path: 'review-sites',
     loadChildren: () => import('./Pages/review-sites/review-sites.module').then( m => m.ReviewSitesPageModule),
     canActivate:[AuthGuardService]
+  },
+  {
+    path: 'location-list',
+    loadChildren: () => import('./Pages/location-list/location-list.module').then( m => m.LocationListPageModule)
   }
+
 ];
 @NgModule({
   imports: [

@@ -1,25 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+  <ion-toolbar color="primary">
+    <ion-buttons *ngIf='IsEdit' slot="start">
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="secondary">
-      <ion-button (click)="logout()" class="icon-only" >
-        <ion-icon name="log-out" ></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    
     <ion-title>Review Site</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
 
-  <ion-list color="warning">
+  <ion-list color="warning" >
     
-    <ion-row>
+    <ion-row class="ion-align-items-center">
       <ion-col size="8">
         <ion-item>
-          <ion-input [(ngModel)]='user.GoogleURL' placeholder="Google" color="danger" ></ion-input>
+          <ion-input [(ngModel)]='location.GoogleURL' placeholder="Google" color="danger" ></ion-input>
           </ion-item> 
        
       </ion-col>
@@ -30,10 +26,10 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="ion-align-items-center">
       <ion-col size="8">
         <ion-item>
-          <ion-input [(ngModel)]='user.FacebookURL' placeholder="Facebook" color="danger" ></ion-input>
+          <ion-input [(ngModel)]='location.FacebookURL' placeholder="Facebook" color="danger" ></ion-input>
           </ion-item> 
        
       </ion-col>
@@ -44,10 +40,10 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="ion-align-items-center">
       <ion-col size="8">
         <ion-item>
-          <ion-input [(ngModel)]='user.InstagramURL' placeholder="Instagram" color="danger" ></ion-input>
+          <ion-input [(ngModel)]='location.InstagramURL' placeholder="Instagram" color="danger" ></ion-input>
           </ion-item> 
        
       </ion-col>
@@ -57,6 +53,15 @@
         </ion-button>
       </ion-col>
     </ion-row>
+
+
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button (click)='back()'  class="ion-text-center" color="primary" >
+          FINISH SETUP
+        </ion-button>
+      </ion-col>
+      </ion-row>
 
   </ion-list>
 
